@@ -186,7 +186,9 @@ class _UniversityListWidget extends StatelessWidget {
                         0,
                     separatorBuilder:
                         (BuildContext context, int indexSubtask) =>
-                            const Divider(),
+                            const Divider(
+                              height: 1,
+                            ),
                     itemBuilder: (BuildContext context, int indexSubtask) {
                       return InkWell(
                         splashColor: dDarkColor,
@@ -199,12 +201,12 @@ class _UniversityListWidget extends StatelessWidget {
                   children: <Widget>[
                     Flexible(
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.only(left: 8.0),
                         child: TextField(
                           style: const TextStyle(
                             fontFamily: 'YandexSansBold',
                             color: dDarkColor,
-                            fontSize: 16,
+                            fontSize: 15,
                           ),
                           cursorColor: dGreyColor,
                           onChanged: (value) => _model?.noteDescription = value,
@@ -232,8 +234,8 @@ class _UniversityListWidget extends StatelessWidget {
                           _model?.saveSubNote(indexTask);
                         },
                         child: const Icon(
-                          CupertinoIcons.add_circled_solid,
-                          color: dDarkColor,
+                          CupertinoIcons.arrow_right_circle_fill,
+                          color: dLightDarkColor,
                           size: 32,
                         ),
                       ),
@@ -287,7 +289,7 @@ class _UniversityListWidget extends StatelessWidget {
                         '    Do you want to delete this task?',
                         style: TextStyle(
                           fontFamily: 'YandexSansRegular',
-                          color: dDarkColor,
+                          color: dWhiteColor,
                           fontSize: 14,
                         ),
                       ),
@@ -299,7 +301,7 @@ class _UniversityListWidget extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(4.0),
                       ),
-                      backgroundColor: dLightBlueColor,
+                      backgroundColor: dDarkColor,
                     ),
                   );
                 },
@@ -307,7 +309,7 @@ class _UniversityListWidget extends StatelessWidget {
                 child: Card(
                   color: dLightDarkColor,
                   child: Container(
-                    height: 80,
+                    height: 55,
                     alignment: Alignment.center,
                     child: ListTile(
                       trailing: _showSub(reverseIndex),
@@ -356,11 +358,11 @@ class _ListTaskWidget extends StatelessWidget {
               '    Do you want to delete this subtask?',
               style: TextStyle(
                 fontFamily: 'YandexSansRegular',
-                color: dDarkColor,
+                color: dWhiteColor,
                 fontSize: 14,
               ),
             ),
-            duration: const Duration(milliseconds: 3000),
+            duration: const Duration(milliseconds: 2000),
             padding: const EdgeInsets.symmetric(
               horizontal: 8.0,
             ),
@@ -368,7 +370,7 @@ class _ListTaskWidget extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(4.0),
             ),
-            backgroundColor: dLightBlueColor,
+            backgroundColor: dDarkColor,
           ),
         );
       },

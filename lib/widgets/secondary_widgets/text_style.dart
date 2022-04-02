@@ -19,7 +19,7 @@ const textStyleForDate = TextStyle(
 const textStyleForTask = TextStyle(
   fontFamily: 'YandexSansBold',
   color: dWhiteColor,
-  fontSize: 20,
+  fontSize: 16,
 );
 const textStyleForSubTask = TextStyle(
   fontFamily: 'YandexSansBold',
