@@ -83,7 +83,7 @@ class ToDoListViewWidget extends StatelessWidget {
                     '    Do you want to delete this note?',
                     style: TextStyle(
                       fontFamily: 'YandexSansRegular',
-                      color: dDarkColor,
+                      color: dWhiteColor,
                       fontSize: 14,
                     ),
                   ),
@@ -95,7 +95,7 @@ class ToDoListViewWidget extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(4.0),
                   ),
-                  backgroundColor: dLightBlueColor,
+                  backgroundColor: dDarkColor,
                 ),
               );
             },
