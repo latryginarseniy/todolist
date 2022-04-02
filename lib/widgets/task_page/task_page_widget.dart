@@ -251,12 +251,12 @@ class _UniversityListWidget extends StatelessWidget {
       final _model = NotesPageWidgetModelProvider.read(context)?.model;
       Icon? exit = _model!.notes[index].showTask
           ? const Icon(
-              CupertinoIcons.chevron_up,
+              CupertinoIcons.chevron_down,
               color: dWhiteColor,
               size: 18,
             )
           : const Icon(
-              CupertinoIcons.chevron_down,
+              CupertinoIcons.chevron_up,
               color: dWhiteColor,
               size: 18,
             );

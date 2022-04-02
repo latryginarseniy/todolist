@@ -96,6 +96,7 @@ class _NoteGroupWidgetForm extends StatelessWidget {
               height: 15,
             ),
             TextField(
+              minLines: 20,
               maxLines: 40,
               cursorColor: dGreyColor,
               style: const TextStyle(
