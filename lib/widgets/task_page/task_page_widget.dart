@@ -172,6 +172,7 @@ class _UniversityListWidget extends StatelessWidget {
     final _addModel = NotesPageWidgetModelProvider.read(context)!.model;
 
     Widget _showSubTask(bool _openTask, int indexTask) {
+      final txt = TextEditingController();
       return _openTask
           ? Column(
               children: [
@@ -203,6 +204,7 @@ class _UniversityListWidget extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 8.0),
                         child: TextField(
+                          controller: txt,
                           style: const TextStyle(
                             fontFamily: 'YandexSansBold',
                             color: dDarkColor,
@@ -232,6 +234,7 @@ class _UniversityListWidget extends StatelessWidget {
                       child: InkWell(
                         onTap: () {
                           _model?.saveSubNote(indexTask);
+                          txt.clear();
                         },
                         child: const Icon(
                           CupertinoIcons.arrow_right_circle_fill,
