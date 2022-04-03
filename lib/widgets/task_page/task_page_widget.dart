@@ -342,7 +342,6 @@ class _ListTaskWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _subtaskModel = NotesPageWidgetModelProvider.read(context)?.model;
-
     final _model = NotesPageWidgetModelProvider.read(context)?.model;
     return ListTile(
       onLongPress: () {
@@ -374,11 +373,41 @@ class _ListTaskWidget extends StatelessWidget {
           ),
         );
       },
-      title: Text(
-        _subtaskModel!.notes[indexTask].subtask![indexSubtask],
-        textAlign: TextAlign.left,
-        style: textStyleForSubTask,
-      ),
+      leading: _model!.notes[indexTask].isDone![indexSubtask]
+          ? const Icon(
+              CupertinoIcons.checkmark_circle_fill,
+              color: dLightDarkColor,
+              size: 24,
+            )
+          : const Icon(
+              CupertinoIcons.circle,
+              color: dLightDarkColor,
+              size: 24,
+            ),
+      trailing: _model.notes[indexTask].isDone![indexSubtask]
+          ? InkWell(
+              onTap: () {
+                _subtaskModel?.deleteSubNote(indexTask, indexSubtask);
+              },
+              child: const Icon(
+                CupertinoIcons.delete_left_fill,
+                color: dLightDarkColor,
+                size: 24,
+              ),
+            )
+          : null,
+      onTap: () => _model.isDoneSubTask(indexTask, indexSubtask),
+      title: _model.notes[indexTask].isDone![indexSubtask]
+          ? Text(
+              _subtaskModel!.notes[indexTask].subtask![indexSubtask],
+              textAlign: TextAlign.left,
+              style: textStyleForIsDoneSubTask,
+            )
+          : Text(
+              _subtaskModel!.notes[indexTask].subtask![indexSubtask],
+              textAlign: TextAlign.left,
+              style: textStyleForSubTask,
+            ),
       dense: false,
     );
   }

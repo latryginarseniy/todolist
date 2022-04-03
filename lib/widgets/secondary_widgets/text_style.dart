@@ -21,9 +21,17 @@ const textStyleForTask = TextStyle(
   color: dWhiteColor,
   fontSize: 16,
 );
+
 const textStyleForSubTask = TextStyle(
   fontFamily: 'YandexSansBold',
   color: dDarkColor,
+  fontSize: 16,
+);
+
+const textStyleForIsDoneSubTask = TextStyle(
+  fontFamily: 'YandexSansBold',
+  color: dDarkColor,
+  decoration: TextDecoration.lineThrough,
   fontSize: 16,
 );
 

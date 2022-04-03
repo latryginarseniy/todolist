@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:todolist/data/task.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todolist/data/note.dart';
 
@@ -15,6 +16,14 @@ class NotesPageWidgetModel extends ChangeNotifier {
   NotesPageWidgetModel() {
     _updateList();
   }
+
+  // void deleteTasks() async {
+  //   if (!Hive.isAdapterRegistered(3)) {
+  //     Hive.registerAdapter(TaskAdapter());
+  //   }
+  //   final box = await Hive.openBox<Task>('tasks');
+  //   box.deleteAll(keys);
+  // }
 
   void _readNoteFromHive(Box<Note> box) {
     _notes = box.values.toList();

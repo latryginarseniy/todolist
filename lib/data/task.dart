@@ -14,5 +14,12 @@ class Task {
   @HiveField(23)
   bool showTask;
 
-  Task({required this.task, required this.subtask, required this.showTask});
+  @HiveField(25)
+  List<bool>? isDone;
+
+  Task(
+      {required this.task,
+      required this.subtask,
+      required this.showTask,
+      required this.isDone});
 }

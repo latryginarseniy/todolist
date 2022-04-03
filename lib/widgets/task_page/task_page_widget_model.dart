@@ -37,11 +37,8 @@ class NotesPageWidgetModel extends ChangeNotifier {
     final box = await Hive.openBox<Task>('tasks');
 
     var oldNote = box.getAt(indexNote);
-    //await box.deleteAt(indexNote);
-    //Task? newNote = oldNote;
     oldNote!.subtask?.removeAt(indexSubNote);
-
-    //await box.add(newNote);
+    oldNote.isDone?.removeAt(indexSubNote);
     box.putAt(indexNote, oldNote);
     _readNoteFromHive(box);
     box.listenable().addListener(() => _readNoteFromHive(box));
@@ -62,7 +59,11 @@ class NotesPageWidgetModel extends ChangeNotifier {
       Hive.registerAdapter(TaskAdapter());
     }
     final box = await Hive.openBox<Task>('tasks');
-    final note = Task(task: noteHeading, subtask: <String>[], showTask: true);
+    final note = Task(
+        task: noteHeading,
+        subtask: <String>[],
+        showTask: true,
+        isDone: <bool>[]);
     await box.add(note);
     close(context);
   }
@@ -74,9 +75,8 @@ class NotesPageWidgetModel extends ChangeNotifier {
     }
     final box = await Hive.openBox<Task>('tasks');
     var oldNote = box.getAt(index);
-    // await box.deleteAt(index);
-    // Task? newNote = oldNote;
     oldNote!.subtask?.add(noteDescription);
+    oldNote.isDone?.add(false);
     await box.putAt(index, oldNote);
     _readNoteFromHive(box);
     box.listenable().addListener(() => _readNoteFromHive(box));
@@ -96,6 +96,22 @@ class NotesPageWidgetModel extends ChangeNotifier {
       oldNote.showTask = true;
     } else {
       oldNote.showTask = false;
+    }
+    box.putAt(index, oldNote);
+    _readNoteFromHive(box);
+    box.listenable().addListener(() => _readNoteFromHive(box));
+  }
+
+  void isDoneSubTask(int index, int subIndex) async {
+    if (!Hive.isAdapterRegistered(3)) {
+      Hive.registerAdapter(TaskAdapter());
+    }
+    final box = await Hive.openBox<Task>('tasks');
+    var oldNote = box.getAt(index);
+    if (oldNote!.isDone?[subIndex] == false) {
+      oldNote.isDone?[subIndex] = true;
+    } else {
+      oldNote.isDone?[subIndex] = false;
     }
     box.putAt(index, oldNote);
     _readNoteFromHive(box);
